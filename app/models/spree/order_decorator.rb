@@ -1,18 +1,24 @@
 module Spree
   Order.class_eval do
-    # TODO: fix the cart error populating and make it work with the framekwork version of this method
-    # Undo d08be0fc90cb1a7dbb286eb214de6b24f4b46635
     def add_variant(variant, quantity = 1)
       current_item = contains?(variant)
       if current_item
         current_item.quantity += quantity
         current_item.save
       else
-        current_item = LineItem.new(:quantity => 1)
+        current_item = LineItem.new
         current_item.variant = variant
         current_item.price   = variant.price
-        self.line_items << current_item
-        current_item.quantity += quantity - 1 if quantity > 1
+
+        # Add OH qty if there are not enough available then add the rest of the qty to present an error message
+        if quantity > variant.on_hand
+          current_item.quantity = variant.on_hand
+          self.line_items << current_item
+          current_item.quantity += quantity - variant.on_hand
+        else
+          current_item.quantity = quantity
+          self.line_items << current_item
+        end
       end
 
       # populate line_items attributes for additional_fields entries
@@ -28,6 +34,9 @@ module Spree
         current_item.update_attribute(field[:name].gsub(' ', '_').downcase, value)
       end
 
+      # NOTE: This line was commented out from the original method
+      # undoing d08be0fc90cb1a7dbb286eb214de6b24f4b46635
+      # self.reload
       current_item
     end
   end
