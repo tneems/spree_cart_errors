@@ -3,9 +3,9 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_cart_errors'
   s.version     = '1.1.2'
-  s.summary     = 'TODO: Add gem summary here'
-  s.description = 'TODO: Add (optional) gem description here'
-  s.required_ruby_version = '>= 1.8.7'
+  s.summary     = 'Error messages on line overerages on spree stores'
+  s.description = 'Error messages on line overerages on spree stores'
+  s.required_ruby_version = '>= 1.9.3'
 
   s.author    = 'Tim Neems'
   s.email     = 'tneems@gmail.com'
