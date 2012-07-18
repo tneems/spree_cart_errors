@@ -1,0 +1,9 @@
+.bundle
+.sass-cache/
+app/compiled_views
+config/database.yml
+public/assets/
+public/spree/
+log/*.log
+tmp/
+
