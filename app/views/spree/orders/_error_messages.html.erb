@@ -1,0 +1,11 @@
+<% if @order && @order.errors.any? %>
+  <div id="errorExplanation" class="errorExplanation" data-hook>
+    <h2><%= t(:order_errors, :count => @order.errors.count) %>:</h2>
+    <p><%= t(:there_were_problems_with_the_following_fields) %>:</p>
+     <ul>
+     <% @order.errors.full_messages.each do |msg| %>
+       <li><%= msg %></li>
+     <% end %>
+     </ul>
+  </div>
+<% end %>

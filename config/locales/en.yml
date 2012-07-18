@@ -2,4 +2,8 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  order_errors:
+    one: "There was an error trying to update your order"
+    other: "There were %{count} errors trying to update your order"
+  item_shortage: "We have %{count} of this item in stock, please reduce your order quantity."
+
