@@ -2,7 +2,7 @@
   <tr>
     <td colspan="6" class="errorExplanation">
       <%= t("item_shortage", :count => line_item.variant.on_hand) %>
-      <% logger.info "Shortage: #{line_item.order.number}, #{request.remote_ip}, #{Time.now.to_s(:db)}, #{line_item.variant.sku}, #{line_item.quantity}, #{line_item.variant.count_on_hand}" %>
+      <% logger.info "Shortage: #{line_item.order.number}, #{request.remote_ip}, #{Time.now.to_s(:db)}, #{line_item.variant.sku}, #{line_item.quantity}, #{line_item.variant.on_hand}" %>
     </td>
   </tr>
 <% end %>

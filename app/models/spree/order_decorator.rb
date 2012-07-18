@@ -8,10 +8,11 @@ module Spree
         current_item.quantity += quantity
         current_item.save
       else
-        current_item = LineItem.new(:quantity => quantity)
+        current_item = LineItem.new(:quantity => 1)
         current_item.variant = variant
         current_item.price   = variant.price
         self.line_items << current_item
+        current_item.quantity += quantity - 1 if quantity > 1
       end
 
       # populate line_items attributes for additional_fields entries
