@@ -14,7 +14,7 @@ module Spree
         if quantity > variant.on_hand
           current_item.quantity = variant.on_hand
           self.line_items << current_item
-          current_item.quantity += quantity - variant.on_hand
+          current_item.quantity = quantity
         else
           current_item.quantity = quantity
           self.line_items << current_item
